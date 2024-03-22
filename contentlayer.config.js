@@ -117,8 +117,6 @@ export default makeSource({
                themes: ['github-dark-dimmed']
             })
             
-            highlighter.loadTheme(JSON.parse(fs.readFileSync(path.join(process.cwd(), "/lib/themes/dark.json"), 'utf8')))
-            
             return highlighter
           },
         },
@@ -147,9 +145,6 @@ export default makeSource({
               preElement.properties["__event__"] = node.__event__
             }
 
-            if (node.__style__) {
-              preElement.properties["__style__"] = node.__style__
-            }
           }
         })
       },

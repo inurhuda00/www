@@ -16,7 +16,11 @@ export const docsConfig: DocsConfig = {
       href: "https://github.com/shadcn/ui",
       external: true,
     },
-    
+    {
+      title: "Twitter",
+      href: "https://twitter.com/shadcn",
+      external: true,
+    },
   ],
   sidebarNav: [
     {
@@ -25,6 +29,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Introduction",
           href: "/docs",
+          items: [],
+        },
+        {
+          title: "Installation",
+          href: "/docs/installation",
           items: [],
         },
         {
