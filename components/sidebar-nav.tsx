@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation"
 import { SidebarNavItem } from "types/nav"
 
 import { cn } from "@/lib/utils"
+import { Icons } from "./icons"
 
 export interface DocsSidebarNavProps {
   items: SidebarNavItem[]
@@ -46,7 +47,7 @@ export function DocsSidebarNavItems({
             key={index}
             href={item.href}
             className={cn(
-              "group flex w-full items-center rounded-md border border-transparent px-2 py-1 hover:underline",
+              "group flex w-full gap-x-4 items-center rounded-md border border-transparent px-2 py-1",
               item.disabled && "cursor-not-allowed opacity-60",
               pathname === item.href
                 ? "font-medium text-foreground"
@@ -55,12 +56,19 @@ export function DocsSidebarNavItems({
             target={item.external ? "_blank" : ""}
             rel={item.external ? "noreferrer" : ""}
           >
-            {item.title}
-            {item.label && (
-              <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
-                {item.label}
+             {item.label && (
+              <span className="w-11">
+                <span className={cn("ml-2 flex-1 rounded-md px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline",
+                colorForMethod(item.label))}
+                >
+                  {item.label}
+                </span>
               </span>
             )}
+            <span className="flex-1 flex items-center group-hover:underline">
+            {item.title}
+            </span>
+           
           </Link>
         ) : (
           <span
@@ -82,3 +90,27 @@ export function DocsSidebarNavItems({
     </div>
   ) : null
 }
+
+
+function colorForMethod(method: string) {
+  switch (method.toLowerCase()) {
+    case "get":
+      return "bg-[#adfa1d]";
+    case "post":
+      return "bg-[#ace2e1]";
+    case "delete":
+      return "delete";
+    case "put":
+      return "put";
+    case "patch":
+      return "warning";
+    case "head":
+      return "head";
+    case "event":
+      return "head";
+    default:
+      return undefined;
+  }
+}
+
+

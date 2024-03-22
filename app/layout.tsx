@@ -27,11 +27,11 @@ export const metadata: Metadata = {
   ],
   authors: [
     {
-      name: "shadcn",
-      url: "https://shadcn.com",
+      name: "se88pay",
+      url: "https://api-doc.s88pay.net",
     },
   ],
-  creator: "shadcn",
+  creator: "se88pay",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
-    creator: "@shadcn",
+    creator: "@se88pay",
   },
   icons: {
     icon: "/favicon.ico",

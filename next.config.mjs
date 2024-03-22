@@ -16,6 +16,15 @@ const nextConfig = {
       },
     ],
   },
+  redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/docs",
+        permanent: true,
+      },
+    ]
+  },
 }
 
 const withContentlayer = createContentlayerPlugin({

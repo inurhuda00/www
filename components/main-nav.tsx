@@ -4,12 +4,16 @@ import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 
 export function MainNav() {
   const pathname = usePathname()
+
+  const navLinks = [
+    { href: "/docs", text: "Docs" },
+    { href: "/docs/api", text: "API" },
+  ]
 
   return (
     <div className="mr-4 hidden md:flex">
@@ -17,26 +21,18 @@ export function MainNav() {
         <Icons.logo className="h-6 w-6" />
       </Link>
       <nav className="flex items-center gap-6 text-sm">
+      {navLinks.map((link, index) => (
         <Link
-          href="/docs"
-          className={cn(
-            "transition-colors hover:text-light/80",
-            pathname === "/docs" ? "text-light" : "text-light/60"
-          )}
-        >
-          Docs
-        </Link>
-        <Link
-          href="/docs/components"
-          className={cn(
-            "transition-colors hover:text-light/80",
-            pathname?.startsWith("/docs/components")
-              ? "text-light"
-              : "text-light/60"
-          )}
-        >
-          API
-        </Link>
+        key={index}
+        href={link.href}
+        className={cn(
+          "transition-colors hover:text-light/80",
+          pathname === link.href ? "text-light" : "text-light/60"
+        )}
+      >
+        {link.text}
+      </Link>
+      ))}
       </nav>
     </div>
   )

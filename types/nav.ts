@@ -6,7 +6,7 @@ export interface NavItem {
   disabled?: boolean
   external?: boolean
   icon?: keyof typeof Icons
-  label?: string
+  label?: "GET" | "POST" | "DELETE" | "PUT" | "PATCH" | "HEAD" | "EVENT"
 }
 
 export interface NavItemWithChildren extends NavItem {
