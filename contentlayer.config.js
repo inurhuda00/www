@@ -13,8 +13,6 @@ import remarkGfm from "remark-gfm"
 import { getHighlighter } from "shiki"
 import { visit } from "unist-util-visit"
 
-import { rehypeNpmCommand } from "./lib/rehype-npm-command"
-
 /** @type {import('contentlayer/source-files').ComputedFields} */
 const computedFields = {
   slug: {
@@ -155,7 +153,6 @@ export default makeSource({
           }
         })
       },
-      rehypeNpmCommand,
       [
         rehypeAutolinkHeadings,
         {

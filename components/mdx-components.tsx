@@ -4,7 +4,6 @@ import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { useMDXComponent } from "next-contentlayer/hooks"
-import { NpmCommands } from "types/unist"
 
 import { Event } from "@/lib/events"
 import { cn } from "@/lib/utils"
@@ -12,7 +11,7 @@ import { Callout } from "@/components/callout"
 import { CodeBlockWrapper } from "@/components/code-block-wrapper"
 import { ComponentExample } from "@/components/component-example"
 import { ComponentSource } from "@/components/component-source"
-import { CopyButton, CopyNpmCommandButton } from "@/components/copy-button"
+import { CopyButton } from "@/components/copy-button"
 import { FrameworkDocs } from "@/components/framework-docs"
 import {
   Accordion,
@@ -165,10 +164,6 @@ const components = {
   pre: ({
     className,
     __rawString__,
-    __npmCommand__,
-    __yarnCommand__,
-    __pnpmCommand__,
-    __bunCommand__,
     __withMeta__,
     __src__,
     __event__,
@@ -178,7 +173,7 @@ const components = {
     __withMeta__?: boolean
     __src__?: string
     __event__?: Event["name"]
-  } & NpmCommands) => {
+  } ) => {
     return (
       <code >
         <pre
@@ -188,7 +183,7 @@ const components = {
           )}
           {...props}
         />
-        {__rawString__ && !__npmCommand__ && (
+        {__rawString__ && (
           <CopyButton
             value={__rawString__}
             src={__src__}
@@ -196,20 +191,6 @@ const components = {
             className={cn("absolute right-4 top-4", __withMeta__ && "top-16")}
           />
         )}
-        {__npmCommand__ &&
-          __yarnCommand__ &&
-          __pnpmCommand__ &&
-          __bunCommand__ && (
-            <CopyNpmCommandButton
-              commands={{
-                __npmCommand__,
-                __yarnCommand__,
-                __pnpmCommand__,
-                __bunCommand__,
-              }}
-              className={cn("absolute right-4 top-4", __withMeta__ && "top-16")}
-            />
-          )}
       </code>
     )
   },
