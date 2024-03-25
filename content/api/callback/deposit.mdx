@@ -1,0 +1,111 @@
+---
+title: "Deposit Callback (Operator)"
+sidebar_position: 2
+---
+
+import ParamsItem from "@theme/ParamsItem";
+
+After the operator sends a payment request to dopayment / deposit, the provider will process it. Once the provider receives the transaction status ( success or failure ), the provider will call this API to forward the transaction status.
+
+```bash cURL
+  curl --request POST \
+    --url https://s88pay.net/api/v1/transaction/resend-callback/SKU20210909025705 \
+    --header 'Content-Type: application/json' \
+    --data '{
+        "key": "<string>",
+        "transaction_code": "<string>",
+        "transaction_no": "<string>"
+      }'
+```
+
+```json Response after decrypting
+{
+  "transaction_code": "",
+  "transaction_status": "",
+  "transaction_amount": "",
+  "transaction_fee": "",
+  "currency_code": "",
+  "transaction_no": "",
+  "transaction_actual_amount": ""
+}
+```
+
+For key, you need to decrypt with `api_key` and `api_secret`. Besides the key, we also send the transaction code in the `transaction_code` parameter and the transaction number in the `transaction_no` parameter, which is not encrypted.
+
+After decrypting the parameters, you will find that the parameters are:
+
+## Parameters
+
+<details
+  style={{ marginBottom: "1rem" }}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary style={{}}>
+    <h3 className={"openapi-markdown__details-summary-header-params"}>
+      Encrypted parameters for
+      <span className="badge badge--head">key</span> query parameter value
+    </h3>
+  </summary>
+  <div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{
+          name: "transaction_code",
+          description: "The transaction code that is sent by the operator on dopayment.",
+          schema: { type: "string" },
+        }}
+      ></ParamsItem>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{
+          name: "transaction_status",
+          description: "The status of the deposit transaction",
+          schema: { type: "integer" },
+        }}
+      ></ParamsItem>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{
+          name: "transaction_amount",
+          description: "The amount of the transaction",
+          schema: { type: "double" },
+        }}
+      ></ParamsItem>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{
+          name: "transaction_fee",
+          description: "The amount of fee transaction",
+          schema: { type: "double" },
+        }}
+      ></ParamsItem>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{
+          name: "currency_code",
+          description: "Currency Code, please refer to currency list",
+          schema: { type: "string" },
+        }}
+      ></ParamsItem>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{
+          name: "transaction_no",
+          description: "The transaction code on the provider’s database",
+          schema: { type: "string" },
+        }}
+      ></ParamsItem>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{
+          name: "transaction_actual_amount",
+          description: "The actual amount paid by the member",
+          schema: { type: "double" },
+        }}
+      ></ParamsItem>
+    </ul>
+  </div>
+</details>

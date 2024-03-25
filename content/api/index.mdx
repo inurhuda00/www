@@ -2,6 +2,7 @@
 title: Introduction
 description: Intro
 ---
+
 To be able to make S88pay via API, the operator has to create a URL that contains the token and parameter. you can clearly look at **API function** documentation for URL and parameters.
 
 Refer to security on pre-requirement, the parameter is usually using key with encrypt function. you can look at the [encrypt / decrypt](/api-reference/encrypt-decrypt).
@@ -13,14 +14,16 @@ Let's say we want to make payment request, the enpoint must be dopayment. And we
 <Steps>
 
 ### Combine all parameters into one string, separated by `&` character
-   for example, to make request in our services.
+
+for example, to make request in our services.
 
 ```php
 $str = merchant_code=xxx&merchant_api_key=xxx&transaction_code=xxx&transaction_timestamp=xxx&payment_code=xxx&transaction_amount=xxx&user_id=xxx&currency_code=xxx
 ```
 
 ### Encrypt using encrypt_decrypt
-   Learn more about [encrypt_decrypt ](/api-reference/encrypt-decrypt)
+
+Learn more about [encrypt_decrypt ](/api-reference/encrypt-decrypt)
 
 Encryption sample:
 
@@ -29,7 +32,8 @@ $key = encrypt_decrypt('encrypt', $str, '{your_api_key}', '{your_secret_key}')
 ```
 
 ### Done
-   So, the request will be:
+
+So, the request will be:
 
 `https://{base_url}/{Merchant_Code}/v2/dopayment?key=3eX%2Bf%2BMoVECXxSkKqV7aBRYIbyWg3DxdPdgZyG%2B377a7dR1OBBDNnU%2B%2Fvtn7hUyjP7WWdZ7gCsPF0J%2BJOiSxb1BFueIyRX3rxbSMa%2B%2FAyFvhz4L%2F2wJmSJKcNQn4whIL1sc1cfj7E1smQFAiYjfLXdY1Ev6Pnoit8Vouex3%2BupnZjJS8t44XRx5wugB5GuybZWPtlPhiN%2FP7P4uJW3RlFlo%2BtYrnHQ6GwqwRkoLrdv3qZXUzaatT8EWdztr973KWFDof2rVD%2B56SMAVrRHQZcYICU8RcjpyvJUaCtXpOKKg%3D`
 

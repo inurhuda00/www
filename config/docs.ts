@@ -34,57 +34,57 @@ export const docsConfig: DocsConfig = {
       items: [
         {
           title: "Merchant Currency",
-          href: "/currency",
+          href: "/docs/currency",
           items: [],
         },
         {
           title: "BDT Bank Code",
-          href: "/bank/bdt",
+          href: "/docs/bank/bdt",
           items: [],
         },
         {
           title: "BRL Bank Code",
-          href: "/bank/brl",
+          href: "/docs/bank/brl",
           items: [],
         },
         {
           title: "CNY Bank Code",
-          href: "/bank/cny",
+          href: "/docs/bank/cny",
           items: [],
         },
         {
           title: "IDR Bank Code",
-          href: "/bank/idr",
+          href: "/docs/bank/idr",
           items: [],
         },
         {
           title: "JPY Bank Code",
-          href: "/bank/jpy",
+          href: "/docs/bank/jpy",
           items: [],
         },
         {
           title: "KRW Bank Code",
-          href: "/bank/krw",
+          href: "/docs/bank/krw",
           items: [],
         },
         {
           title: "MYR Bank Code",
-          href: "/bank/myr",
+          href: "/docs/bank/myr",
           items: [],
         },
         {
           title: "PHP Bank Code",
-          href: "/bank/php",
+          href: "/docs/bank/php",
           items: [],
         },
         {
           title: "THB Bank Code",
-          href: "/bank/thb",
+          href: "/docs/bank/thb",
           items: [],
         },
         {
           title: "VND Bank Code",
-          href: "/bank/vnd",
+          href: "/docs/bank/vnd",
           items: [],
         },
       ],
@@ -105,19 +105,19 @@ export const docsConfig: DocsConfig = {
         },
         {
           title: "Transaction Status",
-          href: "/api",
+          href: "/api/payment",
           items: [],
           label: "POST",
         },
         {
           title: "Payout Request",
-          href: "/api",
+          href: "/api/payment",
           items: [],
           label: "POST",
         },
         {
           title: "Get Balance",
-          href: "/api",
+          href: "/api/payment",
           items: [],
           label: "GET",
         },
@@ -128,31 +128,31 @@ export const docsConfig: DocsConfig = {
       items: [
         {
           title: "Payment Request (for INR, BDT, VND, JPY, BRL)",
-          href: "/api",
+          href: "/api/payment",
           items: [],
           label: "POST",
         },
         {
           title: "Payment Request (for KRW only)",
-          href: "/api",
+          href: "/api/payment",
           items: [],
           label: "POST",
         },
         {
           title: "Submit UTR API (for INR Only)",
-          href: "/api",
+          href: "/api/payment",
           items: [],
           label: "POST",
         },
         {
           title: "Submit RefNo API (for BDT only)",
-          href: "/docs/components/accordion",
+          href: "/api/payment",
           items: [],
           label: "POST",
         },
         {
           title: "Submit Depositor Account (for KRW only)",
-          href: "/docs/components/accordion",
+          href: "/api/payment",
           items: [],
           label: "POST",
         },
@@ -163,12 +163,12 @@ export const docsConfig: DocsConfig = {
       items: [
         {
           title: "Deposit Transaction",
-          href: "/api",
+          href: "/api/status/deposit",
           items: [],
         },
         {
           title: "Payout Transaction",
-          href: "/api",
+          href: "/api/status/payout",
           items: [],
         },
       ],
@@ -178,12 +178,12 @@ export const docsConfig: DocsConfig = {
       items: [
         {
           title: "Payment Error",
-          href: "/api",
+          href: "/api/errors/deposit",
           items: [],
         },
         {
           title: "Payout Error",
-          href: "/api",
+          href: "/api/errors/payout",
           items: [],
         },
       ],
