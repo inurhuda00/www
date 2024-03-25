@@ -21,7 +21,7 @@ function CodePanelHeader({ tag, label }: { tag?: string; label?: string }) {
   }
 
   return (
-    <figcaption className="flex h-9 items-center gap-2 bg-mute px-4">
+    <figcaption className="flex h-9 items-center gap-2 bg-primary/70 px-4">
       {tag && (
         <div className="dark flex">
           <Tag variant="small">{tag}</Tag>
