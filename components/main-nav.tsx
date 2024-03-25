@@ -21,18 +21,18 @@ export function MainNav() {
         <Icons.logo className="h-6 w-6" />
       </Link>
       <nav className="flex items-center gap-6 text-sm">
-      {navLinks.map((link, index) => (
-        <Link
-        key={index}
-        href={link.href}
-        className={cn(
-          "transition-colors hover:text-light/80",
-          pathname === link.href ? "text-light" : "text-light/60"
-        )}
-      >
-        {link.text}
-      </Link>
-      ))}
+        {navLinks.map((link, index) => (
+          <Link
+            key={index}
+            href={link.href}
+            className={cn(
+              "transition-colors hover:text-light/80",
+              pathname === link.href ? "text-light" : "text-light/60"
+            )}
+          >
+            {link.text}
+          </Link>
+        ))}
       </nav>
     </div>
   )

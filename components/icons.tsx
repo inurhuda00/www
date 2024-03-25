@@ -1,11 +1,13 @@
 import Image from "next/image"
 
-import Logo from '../public/logo.png'
+import Logo from "../public/logo.png"
 
 type IconProps = React.HTMLAttributes<SVGElement>
 
 export const Icons = {
-  logo: (props: IconProps) => (<Image src={Logo} className="w-auto h-12" alt={"Logo"}/>),
+  logo: (props: IconProps) => (
+    <Image src={Logo} className="w-auto h-12" alt={"Logo"} />
+  ),
   twitter: (props: IconProps) => (
     <svg
       {...props}

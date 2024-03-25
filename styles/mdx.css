@@ -59,12 +59,18 @@
 }
 
 [data-rehype-pretty-code-title] {
-  @apply mt-2 pt-6 px-4 text-sm font-medium;
+  @apply mt-2 py-3 px-4 text-sm font-medium bg-primary rounded-t-lg text-primary-foreground;
 }
 
-[data-rehype-pretty-code-title] + pre {
-  @apply mt-2;
+
+figure:has(figcaption) pre {
+  @apply rounded-b-lg;
 }
+
+figure:not(:has(figcaption)) pre {
+  @apply rounded-lg;
+}
+
 
 .mdx > .steps:first-child > h3:first-child {
   @apply mt-0;

@@ -1,15 +1,16 @@
-import "@/styles/globals.css"
 import { Metadata, Viewport } from "next"
 
 import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
+import { Toaster as NewYorkSonner } from "@/components/ui/sonner"
+import { Toaster as NewYorkToaster } from "@/components/ui/toaster"
 import { Analytics } from "@/components/analytics"
 import { ThemeProvider } from "@/components/providers"
 import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
-import { Toaster as NewYorkSonner } from "@/components//ui/sonner"
-import { Toaster as NewYorkToaster } from "@/components//ui/toaster"
+
+import "@/styles/globals.css"
 
 export const metadata: Metadata = {
   title: {

@@ -82,6 +82,12 @@ export const Api = defineDocumentType(() => ({
   filePathPattern: `api/**/*.mdx`,
   contentType: "mdx",
   fields: {
+    tag: {
+      type: "string", 
+    }, 
+    label: {
+      type: "string", 
+    },
     title: {
       type: "string",
       required: true,

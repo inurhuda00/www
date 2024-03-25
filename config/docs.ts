@@ -27,7 +27,7 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
       ],
-      icon: "radix"
+      icon: "radix",
     },
     {
       title: "Resources",
@@ -35,55 +35,55 @@ export const docsConfig: DocsConfig = {
         {
           title: "Merchant Currency",
           href: "/currency",
-          items: []
+          items: [],
         },
         {
-          title: "BDT Bank Code", 
+          title: "BDT Bank Code",
           href: "/bank/bdt",
           items: [],
         },
         {
-          title: "BRL Bank Code", 
+          title: "BRL Bank Code",
           href: "/bank/brl",
           items: [],
         },
         {
-          title: "CNY Bank Code", 
+          title: "CNY Bank Code",
           href: "/bank/cny",
           items: [],
         },
         {
-          title: "IDR Bank Code", 
+          title: "IDR Bank Code",
           href: "/bank/idr",
           items: [],
         },
         {
-          title: "JPY Bank Code", 
+          title: "JPY Bank Code",
           href: "/bank/jpy",
           items: [],
         },
         {
-          title: "KRW Bank Code", 
+          title: "KRW Bank Code",
           href: "/bank/krw",
           items: [],
         },
         {
-          title: "MYR Bank Code", 
+          title: "MYR Bank Code",
           href: "/bank/myr",
           items: [],
         },
         {
-          title: "PHP Bank Code", 
+          title: "PHP Bank Code",
           href: "/bank/php",
           items: [],
         },
         {
-          title: "THB Bank Code", 
+          title: "THB Bank Code",
           href: "/bank/thb",
           items: [],
         },
         {
-          title: "VND Bank Code", 
+          title: "VND Bank Code",
           href: "/bank/vnd",
           items: [],
         },
@@ -94,32 +94,32 @@ export const docsConfig: DocsConfig = {
       items: [
         {
           title: "Overview",
-          href: "/docs/api",
+          href: "/api",
           items: [],
         },
         {
           title: "Payment Request",
-          href: "/docs/api",
+          href: "/api/payment",
           items: [],
-          label: "GET"
+          label: "GET",
         },
         {
           title: "Transaction Status",
-          href: "/docs/api",
+          href: "/api",
           items: [],
-          label: "POST"
+          label: "POST",
         },
         {
           title: "Payout Request",
-          href: "/docs/api",
+          href: "/api",
           items: [],
-          label: "POST"
+          label: "POST",
         },
         {
           title: "Get Balance",
-          href: "/docs/api",
+          href: "/api",
           items: [],
-          label: "GET"
+          label: "GET",
         },
       ],
     },
@@ -128,33 +128,33 @@ export const docsConfig: DocsConfig = {
       items: [
         {
           title: "Payment Request (for INR, BDT, VND, JPY, BRL)",
-          href: "/docs/api",
+          href: "/api",
           items: [],
-          label: "POST"
+          label: "POST",
         },
         {
           title: "Payment Request (for KRW only)",
-          href: "/docs/api",
+          href: "/api",
           items: [],
-          label: "POST"
+          label: "POST",
         },
         {
           title: "Submit UTR API (for INR Only)",
-          href: "/docs/api",
+          href: "/api",
           items: [],
-          label: "POST"
+          label: "POST",
         },
         {
           title: "Submit RefNo API (for BDT only)",
           href: "/docs/components/accordion",
           items: [],
-          label: "POST"
+          label: "POST",
         },
         {
           title: "Submit Depositor Account (for KRW only)",
           href: "/docs/components/accordion",
           items: [],
-          label: "POST"
+          label: "POST",
         },
       ],
     },
@@ -163,15 +163,14 @@ export const docsConfig: DocsConfig = {
       items: [
         {
           title: "Deposit Transaction",
-          href: "/docs/api",
+          href: "/api",
           items: [],
         },
         {
           title: "Payout Transaction",
-          href: "/docs/api",
+          href: "/api",
           items: [],
         },
-       
       ],
     },
     {
@@ -179,15 +178,14 @@ export const docsConfig: DocsConfig = {
       items: [
         {
           title: "Payment Error",
-          href: "/docs/api",
+          href: "/api",
           items: [],
         },
         {
           title: "Payout Error",
-          href: "/docs/api",
+          href: "/api",
           items: [],
         },
-       
       ],
     },
   ],

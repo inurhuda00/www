@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons"
-import { Doc } from "contentlayer/generated"
+import { Api, Doc } from "contentlayer/generated"
 import { NavItem, NavItemWithChildren } from "types/nav"
 
 import { docsConfig } from "@/config/docs"
@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 
 interface DocsPagerProps {
-  doc: Doc
+  doc: Doc | Api
 }
 
 export function DocsPager({ doc }: DocsPagerProps) {
@@ -42,7 +42,7 @@ export function DocsPager({ doc }: DocsPagerProps) {
   )
 }
 
-export function getPagerForDoc(doc: Doc) {
+export function getPagerForDoc(doc: Doc | Api) {
   const flattenedLinks = [null, ...flatten(docsConfig.sidebarNav), null]
   const activeIndex = flattenedLinks.findIndex(
     (link) => doc.slug === link?.href

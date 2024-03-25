@@ -7,6 +7,8 @@ import { TableOfContents } from "@/lib/toc"
 import { cn } from "@/lib/utils"
 import { useMounted } from "@/hooks/use-mounted"
 
+// @ts-nocheck
+
 interface TocProps {
   toc: TableOfContents
 }

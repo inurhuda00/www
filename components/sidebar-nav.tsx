@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation"
 import { SidebarNavItem } from "types/nav"
 
 import { cn } from "@/lib/utils"
-import { Icons } from "./icons"
 
 export interface DocsSidebarNavProps {
   items: SidebarNavItem[]
@@ -56,19 +55,21 @@ export function DocsSidebarNavItems({
             target={item.external ? "_blank" : ""}
             rel={item.external ? "noreferrer" : ""}
           >
-             {item.label && (
+            {item.label && (
               <span className="w-11">
-                <span className={cn("ml-2 flex-1 rounded-md px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline",
-                colorForMethod(item.label))}
+                <span
+                  className={cn(
+                    "ml-2 flex-1 rounded-md px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline",
+                    colorForMethod(item.label)
+                  )}
                 >
                   {item.label}
                 </span>
               </span>
             )}
             <span className="flex-1 flex items-center group-hover:underline">
-            {item.title}
+              {item.title}
             </span>
-           
           </Link>
         ) : (
           <span
@@ -91,26 +92,23 @@ export function DocsSidebarNavItems({
   ) : null
 }
 
-
 function colorForMethod(method: string) {
   switch (method.toLowerCase()) {
     case "get":
-      return "bg-[#adfa1d]";
+      return "bg-[#adfa1d]"
     case "post":
-      return "bg-[#ace2e1]";
+      return "bg-[#ace2e1]"
     case "delete":
-      return "delete";
+      return "delete"
     case "put":
-      return "put";
+      return "put"
     case "patch":
-      return "warning";
+      return "warning"
     case "head":
-      return "head";
+      return "head"
     case "event":
-      return "head";
+      return "head"
     default:
-      return undefined;
+      return undefined
   }
 }
-
-

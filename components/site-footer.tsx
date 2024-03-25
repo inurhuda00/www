@@ -6,23 +6,27 @@ export function SiteFooter() {
       <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
         <p className="text-balance text-center text-sm leading-loose text-muted-foreground md:text-left">
           Built by{" "}
-          {siteConfig.links.twitter && <a
-            href={siteConfig.links.twitter}
-            target="_blank"
-            rel="noreferrer"
-            className="font-medium underline underline-offset-4"
-          >
-            S88pay
-          </a>}
+          {siteConfig.links.twitter && (
+            <a
+              href={siteConfig.links.twitter}
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium underline underline-offset-4"
+            >
+              S88pay
+            </a>
+          )}
           . The source code is available on{" "}
-          {siteConfig.links.github && <a
-            href={siteConfig.links.github}
-            target="_blank"
-            rel="noreferrer"
-            className="font-medium underline underline-offset-4"
-          >
-            GitHub
-          </a>}
+          {siteConfig.links.github && (
+            <a
+              href={siteConfig.links.github}
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium underline underline-offset-4"
+            >
+              GitHub
+            </a>
+          )}
           .
         </p>
       </div>
