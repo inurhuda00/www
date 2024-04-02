@@ -157,9 +157,26 @@ export default makeSource({
       [
         rehypePrettyCode,
         {
+          defaultLang: "json",
           getHighlighter: async () => {
             const highlighter = await getHighlighter({
                langs: ['ts', 'js', 'php', 'c#', 'java'],
+               langAlias: { 
+                "200": 'json',
+                "201": 'json',
+                "400": 'json',
+                "109": "json",
+                "110": "json",
+                "111": "json",
+                "112": "json",
+                "113": "json",
+                "114": "json",
+                "115": "json",
+                "116": "json",
+                "117": "json",
+                "118": "json",
+                "119": "json",
+              },
                themes: ['github-dark-dimmed']
             })
             

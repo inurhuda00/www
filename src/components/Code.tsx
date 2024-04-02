@@ -59,7 +59,7 @@ export function CodeGroup({
     <Tabs defaultValue={languages.at(0)}>
       <div className="flex min-h-[calc(theme(spacing.12)+1px)] flex-wrap items-center gap-x-4 border-b border-primary bg-primary px-4  rounded-t-lg">
         <h3 className="mr-auto text-xs font-semibold text-primary-foreground">
-          Request
+          {props.title}
         </h3>
         <List className={cn("-mb-2 flex gap-4 text-xs")}>
           {languages.map((lang: string, index: number) => (
@@ -76,15 +76,12 @@ export function CodeGroup({
         </List>
       </div>
       <figure>
-        <CodePanelHeader tag={props.tag} label={props.label} />
-        {Children.map(children, (figure: any) =>
-          Children.map(figure.props.children, (code, index) => {
-            return (
-              <TabsContent key={index} value={code.props["data-language"]}>
+      {props.tag ? <CodePanelHeader tag={props.tag} label={props.label} /> : <figcaption/>}
+        {Children.map(children, (figure: any, index) => (
+              <TabsContent key={index} value={figure.props.children.props["data-language"]}>
                 {figure.props.children}
               </TabsContent>
             )
-          })
         ) ?? []}
       </figure>
     </Tabs>

@@ -57,27 +57,42 @@ toc: false
 
       </CodeGroup>
 
-    ```json title="response"
-    {
-      "has_more": false,
-      "data": [
-        {
-          "id": "WAz8eIbvDR60rouK",
-          "username": "FrankMcCallister",
-          "phone_number": "1-800-759-3000",
-          "avatar_url": "https://assets.protocol.chat/avatars/frank.jpg",
-          "display_name": null,
-          "conversation_id": "xgQQXg3hrtjh7AvZ",
-          "last_active_at": 705103200,
-          "created_at": 692233200
-        },
-        {
-          "id": "hSIhXBhNe8X1d8Et"
-          // ...
-        }
-      ]
-    }
-    ```
+      <CodeGroup title="Response"> 
+      ```200
+      {
+        "has_more": false,
+        "data": [
+          {
+            "id": "WAz8eIbvDR60rouK",
+            "username": "FrankMcCallister",
+            "phone_number": "1-800-759-3000",
+            "avatar_url": "https://assets.protocol.chat/avatars/frank.jpg",
+          }
+        ]
+      }
+      ```
+      ```400
+      {
+        "has_more": false,
+        "data": [
+          {
+            "id": "WAz8eIbvDR60rouK",
+            "username": "FrankMcCallister",
+            "phone_number": "1-800-759-3000",
+            "avatar_url": "https://assets.protocol.chat/avatars/frank.jpg",
+            "display_name": null,
+            "conversation_id": "xgQQXg3hrtjh7AvZ",
+            "last_active_at": 705103200,
+            "created_at": 692233200
+          },
+          {
+            "id": "hSIhXBhNe8X1d8Et"
+            // ...
+          }
+        ]
+      }
+      ```
+    </CodeGroup>
 
   </Col>
 </Row>
