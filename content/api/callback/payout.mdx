@@ -1,8 +1,7 @@
 ---
-title: "Payout Callback (Operator)"
-sidebar_position: 3
+title: Payout Callback (Operator)
+description: callback
 ---
-import ParamsItem from "@theme/ParamsItem";
 
 After the operator sends payout requests, the provider will process it. Once the provider gets the transaction status (success or failed), the provider will call this API to forward the transaction status.
 
@@ -51,62 +50,62 @@ After decrypting the parameter you will find that the parameters are:
   </summary>
   <div>
     <ul>
-      <ParamsItem
-        className={"paramsItem"}
+      <Property
+        className={"Property"}
         param={{
           name: "transaction_no",
           description: "The transaction code recorded by the provider",
           schema: { type: "string" },
         }}
-      ></ParamsItem>
-      <ParamsItem
-        className={"paramsItem"}
+      ></Property>
+      <Property
+        className={"Property"}
         param={{
           name: "transaction_code",
           description: "The transaction code sent by the operator on payout request",
           schema: { type: "string" },
         }}
-      ></ParamsItem>
-      <ParamsItem
-        className={"paramsItem"}
+      ></Property>
+      <Property
+        className={"Property"}
         param={{
           name: "transaction_status",
           description: "The status of the payout transaction",
           schema: { type: "integer" },
         }}
-      ></ParamsItem>
-      <ParamsItem
-        className={"paramsItem"}
+      ></Property>
+      <Property
+        className={"Property"}
         param={{
           name: "transaction_amount",
           description: "The amount of of the transaction",
           schema: { type: "double" },
         }}
-      ></ParamsItem>
-      <ParamsItem
-        className={"paramsItem"}
+      ></Property>
+      <Property
+        className={"Property"}
         param={{
           name: "transaction_fee",
           description: "The amount of fee transaction",
           schema: { type: "double" },
         }}
-      ></ParamsItem>
-      <ParamsItem
-        className={"paramsItem"}
+      ></Property>
+      <Property
+        className={"Property"}
         param={{
           name: "currency_code",
           description: "Currency Code, please refer to currency list",
           schema: { type: "string" },
         }}
-      ></ParamsItem>
-      <ParamsItem
-        className={"paramsItem"}
+      ></Property>
+      <Property
+        className={"Property"}
         param={{
           name: "transaction_ref",
           description: "Transaction reference of payout request",
           schema: { type: "double" },
         }}
-      ></ParamsItem>
+      ></Property>
     </ul>
   </div>
 </details>

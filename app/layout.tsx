@@ -5,7 +5,6 @@ import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { Toaster as NewYorkSonner } from "@/components/ui/sonner"
 import { Toaster as NewYorkToaster } from "@/components/ui/toaster"
-import { Analytics } from "@/components/analytics"
 import { ThemeProvider } from "@/components/providers"
 import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
@@ -82,9 +81,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <head />
         <body
           className={cn(
-            "min-h-screen bg-background font-sans antialiased",
-            fontSans.className
-          )}
+            "min-h-screen bg-background font-sans antialiased", fontSans.className )}
         >
           <ThemeProvider
             attribute="class"
@@ -99,7 +96,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
               </div>
             </div>
             <TailwindIndicator />
-            <Analytics />
             <NewYorkToaster />
             <NewYorkSonner />
           </ThemeProvider>

@@ -159,6 +159,26 @@ export const docsConfig: DocsConfig = {
       ],
     },
     {
+      title: "Callback",
+      items: [
+        {
+          title: "Callback Page",
+          href: "/api/callback/page",
+          items: [],
+        },
+        {
+          title: "Deposit Callback ",
+          href: "/api/callback/deposit",
+          items: [],
+        },
+        {
+          title: "Payout Callback",
+          href: "/api/callback/payout",
+          items: [],
+        },
+      ],
+    },
+    {
       title: "Status",
       items: [
         {

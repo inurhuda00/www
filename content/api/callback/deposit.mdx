@@ -1,9 +1,8 @@
 ---
-title: "Deposit Callback (Operator)"
-sidebar_position: 2
+title: Deposit Callback (Operator)
+description: callback
 ---
 
-import ParamsItem from "@theme/ParamsItem";
 
 After the operator sends a payment request to dopayment / deposit, the provider will process it. Once the provider receives the transaction status ( success or failure ), the provider will call this API to forward the transaction status.
 
@@ -50,62 +49,62 @@ After decrypting the parameters, you will find that the parameters are:
   </summary>
   <div>
     <ul>
-      <ParamsItem
-        className={"paramsItem"}
+      <Property
+        className={"Property"}
         param={{
           name: "transaction_code",
           description: "The transaction code that is sent by the operator on dopayment.",
           schema: { type: "string" },
         }}
-      ></ParamsItem>
-      <ParamsItem
-        className={"paramsItem"}
+      ></Property>
+      <Property
+        className={"Property"}
         param={{
           name: "transaction_status",
           description: "The status of the deposit transaction",
           schema: { type: "integer" },
         }}
-      ></ParamsItem>
-      <ParamsItem
-        className={"paramsItem"}
+      ></Property>
+      <Property
+        className={"Property"}
         param={{
           name: "transaction_amount",
           description: "The amount of the transaction",
           schema: { type: "double" },
         }}
-      ></ParamsItem>
-      <ParamsItem
-        className={"paramsItem"}
+      ></Property>
+      <Property
+        className={"Property"}
         param={{
           name: "transaction_fee",
           description: "The amount of fee transaction",
           schema: { type: "double" },
         }}
-      ></ParamsItem>
-      <ParamsItem
-        className={"paramsItem"}
+      ></Property>
+      <Property
+        className={"Property"}
         param={{
           name: "currency_code",
           description: "Currency Code, please refer to currency list",
           schema: { type: "string" },
         }}
-      ></ParamsItem>
-      <ParamsItem
-        className={"paramsItem"}
+      ></Property>
+      <Property
+        className={"Property"}
         param={{
           name: "transaction_no",
           description: "The transaction code on the provider’s database",
           schema: { type: "string" },
         }}
-      ></ParamsItem>
-      <ParamsItem
-        className={"paramsItem"}
+      ></Property>
+      <Property
+        className={"Property"}
         param={{
           name: "transaction_actual_amount",
           description: "The actual amount paid by the member",
           schema: { type: "double" },
         }}
-      ></ParamsItem>
+      ></Property>
     </ul>
   </div>
 </details>
