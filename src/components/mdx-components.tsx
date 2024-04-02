@@ -17,7 +17,7 @@ import {
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { CodeGroup } from "@/components/Code"
+import { CodeGroup } from "@/components/code-group"
 import { Callout } from "@/components/callout"
 import { CodeBlockWrapper } from "@/components/code-block-wrapper"
 import { ComponentExample } from "@/components/component-example"
