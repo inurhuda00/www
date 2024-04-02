@@ -1,6 +1,6 @@
 import { Metadata, Viewport } from "next"
 
-import { siteConfig } from "@/config/site"
+import { siteConfig } from "config/site"
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { Toaster as NewYorkSonner } from "@/components/ui/sonner"
@@ -8,8 +8,14 @@ import { Toaster as NewYorkToaster } from "@/components/ui/toaster"
 import { ThemeProvider } from "@/components/providers"
 import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
+import { NextIntlClientProvider, useMessages } from "next-intl"
+import { locales } from "@/navigation"
+import { unstable_setRequestLocale } from "next-intl/server"
+import  "@/styles/globals.css";
 
-import "@/styles/globals.css"
+export function generateStaticParams() {
+  return locales.map((locale) => ({locale}));
+}
 
 export const metadata: Metadata = {
   title: {
@@ -72,9 +78,13 @@ export const viewport: Viewport = {
 
 interface RootLayoutProps {
   children: React.ReactNode
+  params: {locale: string}
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({ children, params: {locale} }: RootLayoutProps) {
+  unstable_setRequestLocale(locale);
+  const messages = useMessages();
+  
   return (
     <>
       <html lang="en" suppressHydrationWarning>
@@ -83,6 +93,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           className={cn(
             "min-h-screen bg-background font-sans antialiased", fontSans.className )}
         >
+          <NextIntlClientProvider messages={messages}>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -99,6 +110,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <NewYorkToaster />
             <NewYorkSonner />
           </ThemeProvider>
+          </NextIntlClientProvider>
         </body>
       </html>
     </>

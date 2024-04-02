@@ -1,0 +1,44 @@
+{
+  "Index": {
+    "title": "Hello world!"
+  },
+  "Nav": {
+    "docs": "Docs",
+    "api": "API",
+    "documentation": "Documentation",
+    "getting-started": "Getting Started",
+    "introduction": "Introduction",
+    "pre-requirement": "Pre Requirement",
+    "resources": "Resources",
+    "merchant-currency": "Merchant Currency",
+    "bdt-bank-code": "Bdt Bank Code",
+    "brl-bank-code": "Brl Bank Code",
+    "cny-bank-code": "Cny Bank Code",
+    "idr-bank-code": "Idr Bank Code",
+    "jpy-bank-code": "Jpy Bank Code",
+    "krw-bank-code": "Krw Bank Code",
+    "myr-bank-code": "Myr Bank Code",
+    "php-bank-code": "Php Bank Code",
+    "thb-bank-code": "Thb Bank Code",
+    "vnd-bank-code": "Vnd Bank Code",
+    "api-references": "Api References",
+    "overview": "Overview",
+    "payment-request": "Payment Request",
+    "transaction-status": "Transaction Status",
+    "payout-request": "Payout Request",
+    "get-balance": "Get Balance",
+    "callback": "Callback",
+    "callback-page": "Callback Page",
+    "deposit-callback": "Deposit Callback",
+    "payout-callback": "Payout Callback",
+    "status": "Status",
+    "deposit-transaction": "Deposit-Transaction",
+    "payout-transaction": "Payout-Transaction",
+    "error": "Error",
+    "payment-error": "Payment-Error",
+    "payout-error": "Payout-Error"
+  },
+  "Layout": {
+    "on-this-page": "On This Page"
+  }
+}

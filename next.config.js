@@ -1,4 +1,7 @@
-import { createContentlayerPlugin } from "next-contentlayer"
+const { createContentlayerPlugin } = require("next-contentlayer");
+const createNextIntlPlugin = require("next-intl/plugin");
+ 
+
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -16,19 +19,9 @@ const nextConfig = {
       },
     ],
   },
-  redirects() {
-    return [
-      {
-        source: "/",
-        destination: "/docs",
-        permanent: true,
-      },
-    ]
-  },
 }
 
-const withContentlayer = createContentlayerPlugin({
-  // Additional Contentlayer config options
-})
+const withContentlayer = createContentlayerPlugin()
+const withNextIntl = createNextIntlPlugin();
 
-export default withContentlayer(nextConfig)
+module.exports =  withNextIntl(withContentlayer(nextConfig))

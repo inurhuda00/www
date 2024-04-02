@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation"
 import { SidebarNavItem } from "types/nav"
 
 import { cn } from "@/lib/utils"
+import { useTranslations } from "next-intl"
 
 export interface DocsSidebarNavProps {
   items: SidebarNavItem[]
@@ -12,13 +13,14 @@ export interface DocsSidebarNavProps {
 
 export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
   const pathname = usePathname()
+  const t = useTranslations()
 
   return items.length ? (
     <div className="w-full">
       {items.map((item, index) => (
         <div key={index} className={cn("pb-4")}>
           <h4 className="mb-1 rounded-md px-2 py-1 text-sm font-semibold">
-            {item.title}
+            {t(item.title)}
           </h4>
           {item?.items?.length && (
             <DocsSidebarNavItems items={item.items} pathname={pathname} />
@@ -38,6 +40,8 @@ export function DocsSidebarNavItems({
   items,
   pathname,
 }: DocsSidebarNavItemsProps) {
+  const t = useTranslations()
+
   return items?.length ? (
     <div className="grid grid-flow-row auto-rows-max text-sm">
       {items.map((item, index) =>
@@ -68,7 +72,7 @@ export function DocsSidebarNavItems({
               </span>
             )}
             <span className="flex-1 flex items-center group-hover:underline">
-              {item.title}
+              {t(item.title)}
             </span>
           </Link>
         ) : (
@@ -79,7 +83,7 @@ export function DocsSidebarNavItems({
               item.disabled && "cursor-not-allowed opacity-60"
             )}
           >
-            {item.title}
+            {t(item.title)}
             {item.label && (
               <span className="ml-2 rounded-md bg-muted px-1.5 py-0.5 text-xs leading-none text-muted-foreground no-underline group-hover:no-underline">
                 {item.label}

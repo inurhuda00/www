@@ -12,7 +12,7 @@ import {
 } from "@radix-ui/react-icons"
 import { useTheme } from "next-themes"
 
-import { docsConfig } from "@/config/docs"
+import { docsConfig } from "config/docs"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
@@ -24,8 +24,11 @@ import {
   CommandList,
   CommandSeparator,
 } from "@/components/ui/command"
+import { useTranslations } from "next-intl"
 
 export function CommandMenu({ ...props }: DialogProps) {
+  const t = useTranslations()
+
   const router = useRouter()
   const [open, setOpen] = React.useState(false)
   const { setTheme } = useTheme()
@@ -82,13 +85,13 @@ export function CommandMenu({ ...props }: DialogProps) {
               .map((navItem) => (
                 <CommandItem
                   key={navItem.href}
-                  value={navItem.title}
+                  value={t(navItem.title)}
                   onSelect={() => {
                     runCommand(() => router.push(navItem.href as string))
                   }}
                 >
                   <FileIcon className="mr-2 h-4 w-4" />
-                  {navItem.title}
+                  {t(navItem.title)}
                 </CommandItem>
               ))}
           </CommandGroup>
@@ -97,7 +100,7 @@ export function CommandMenu({ ...props }: DialogProps) {
               {group.items.map((navItem) => (
                 <CommandItem
                   key={navItem.href}
-                  value={navItem.title}
+                  value={t(navItem.title)}
                   onSelect={() => {
                     runCommand(() => router.push(navItem.href as string))
                   }}
@@ -105,7 +108,7 @@ export function CommandMenu({ ...props }: DialogProps) {
                   <div className="mr-2 flex h-4 w-4 items-center justify-center">
                     <CircleIcon className="h-3 w-3" />
                   </div>
-                  {navItem.title}
+                  {t(navItem.title)}
                 </CommandItem>
               ))}
             </CommandGroup>

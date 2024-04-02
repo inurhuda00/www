@@ -3,15 +3,17 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons"
 import { Api, Doc } from "contentlayer/generated"
 import { NavItem, NavItemWithChildren } from "types/nav"
 
-import { docsConfig } from "@/config/docs"
+import { docsConfig } from "config/docs"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
+import { useTranslations } from "next-intl"
 
 interface DocsPagerProps {
   doc: Doc | Api
 }
 
 export function DocsPager({ doc }: DocsPagerProps) {
+  const t = useTranslations();
   const pager = getPagerForDoc(doc)
 
   if (!pager) {
@@ -26,7 +28,7 @@ export function DocsPager({ doc }: DocsPagerProps) {
           className={buttonVariants({ variant: "outline" })}
         >
           <ChevronLeftIcon className="mr-2 h-4 w-4" />
-          {pager.prev.title}
+          {t(pager.prev.title)}
         </Link>
       )}
       {pager?.next?.href && (
@@ -34,7 +36,7 @@ export function DocsPager({ doc }: DocsPagerProps) {
           href={pager.next.href}
           className={cn(buttonVariants({ variant: "outline" }), "ml-auto")}
         >
-          {pager.next.title}
+          {t(pager.next.title)}
           <ChevronRightIcon className="ml-2 h-4 w-4" />
         </Link>
       )}

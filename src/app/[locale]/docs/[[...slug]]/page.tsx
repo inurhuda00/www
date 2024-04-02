@@ -1,8 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { notFound } from "next/navigation"
 
-import { siteConfig } from "@/config/site"
+import { siteConfig } from "config/site"
 import { getTableOfContents } from "@/lib/toc"
 import { absoluteUrl, cn } from "@/lib/utils"
 import { badgeVariants } from "@/components//ui/badge"
@@ -15,10 +14,13 @@ import "@/styles/mdx.css"
 import { ChevronRightIcon, ExternalLinkIcon } from "@radix-ui/react-icons"
 import { allDocs } from "contentlayer/generated"
 import Balancer from "react-wrap-balancer"
+import { unstable_setRequestLocale } from "next-intl/server"
+import { redirect } from "@/navigation"
 
 interface DocPageProps {
   params: {
     slug: string[]
+    locale: string
   }
 }
 
@@ -72,15 +74,19 @@ export async function generateStaticParams(): Promise<
   DocPageProps["params"][]
 > {
   return allDocs.map((doc) => ({
+    locale: 'en',
     slug: doc.slugAsParams.split("/"),
   }))
 }
 
 export default async function DocPage({ params }: DocPageProps) {
+  // @ts-ignore
+  unstable_setRequestLocale(params.locale);
+
   const doc = await getDocFromParams({ params })
 
   if (!doc) {
-    notFound()
+    return redirect('/')
   }
 
   const toc = await getTableOfContents(doc.body.raw)

@@ -4,14 +4,16 @@ import * as React from "react"
 import Link, { LinkProps } from "next/link"
 import { useRouter } from "next/navigation"
 
-import { docsConfig } from "@/config/docs"
+import { docsConfig } from "config/docs"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Icons } from "@/components/icons"
+import { useTranslations } from "next-intl"
 
 export function MobileNav() {
+  const t = useTranslations()
   const [open, setOpen] = React.useState(false)
 
   return (
@@ -71,7 +73,7 @@ export function MobileNav() {
                     href={item.href}
                     onOpenChange={setOpen}
                   >
-                    {item.title}
+                    {t(item.title)}
                   </MobileLink>
                 )
             )}
@@ -79,7 +81,7 @@ export function MobileNav() {
           <div className="flex flex-col space-y-2">
             {docsConfig.sidebarNav.map((item, index) => (
               <div key={index} className="flex flex-col space-y-3 pt-6">
-                <h4 className="font-medium">{item.title}</h4>
+                <h4 className="font-medium">{t(item.title)}</h4>
                 {item?.items?.length &&
                   item.items.map((item) => (
                     <React.Fragment key={item.href}>
@@ -90,7 +92,7 @@ export function MobileNav() {
                             onOpenChange={setOpen}
                             className="text-muted-foreground"
                           >
-                            {item.title}
+                            {t(item.title)}
                             {item.label && (
                               <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
                                 {item.label}
@@ -98,7 +100,7 @@ export function MobileNav() {
                             )}
                           </MobileLink>
                         ) : (
-                          item.title
+                          t(item.title)
                         ))}
                     </React.Fragment>
                   ))}

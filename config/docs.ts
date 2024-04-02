@@ -8,21 +8,21 @@ interface DocsConfig {
 export const docsConfig: DocsConfig = {
   mainNav: [
     {
-      title: "Documentation",
+      title: "Nav.documentation",
       href: "/docs",
     },
   ],
   sidebarNav: [
     {
-      title: "Getting Started",
+      title: "Nav.getting-started",
       items: [
         {
-          title: "Introduction",
+          title: "Nav.introduction",
           href: "/docs",
           items: [],
         },
         {
-          title: "Pre Requirement",
+          title: "Nav.pre-requirement",
           href: "/docs/security",
           items: [],
         },
@@ -30,93 +30,93 @@ export const docsConfig: DocsConfig = {
       icon: "radix",
     },
     {
-      title: "Resources",
+      title: "Nav.resources",
       items: [
         {
-          title: "Merchant Currency",
+          title: "Nav.merchant-currency",
           href: "/docs/currency",
           items: [],
         },
         {
-          title: "BDT Bank Code",
+          title: "Nav.bdt-bank-code",
           href: "/docs/bank/bdt",
           items: [],
         },
         {
-          title: "BRL Bank Code",
+          title: "Nav.brl-bank-code",
           href: "/docs/bank/brl",
           items: [],
         },
         {
-          title: "CNY Bank Code",
+          title: "Nav.cny-bank-code",
           href: "/docs/bank/cny",
           items: [],
         },
         {
-          title: "IDR Bank Code",
+          title: "Nav.idr-bank-code",
           href: "/docs/bank/idr",
           items: [],
         },
         {
-          title: "JPY Bank Code",
+          title: "Nav.jpy-bank-code",
           href: "/docs/bank/jpy",
           items: [],
         },
         {
-          title: "KRW Bank Code",
+          title: "Nav.krw-bank-code",
           href: "/docs/bank/krw",
           items: [],
         },
         {
-          title: "MYR Bank Code",
+          title: "Nav.myr-bank-code",
           href: "/docs/bank/myr",
           items: [],
         },
         {
-          title: "PHP Bank Code",
+          title: "Nav.php-bank-code",
           href: "/docs/bank/php",
           items: [],
         },
         {
-          title: "THB Bank Code",
+          title: "Nav.thb-bank-code",
           href: "/docs/bank/thb",
           items: [],
         },
         {
-          title: "VND Bank Code",
+          title: "Nav.vnd-bank-code",
           href: "/docs/bank/vnd",
           items: [],
         },
       ],
     },
     {
-      title: "API References",
+      title: "Nav.api-references",
       items: [
         {
-          title: "Overview",
+          title: "Nav.overview",
           href: "/api",
           items: [],
         },
         {
-          title: "Payment Request",
+          title: "Nav.payment-request",
           href: "/api/payment",
           items: [],
           label: "GET",
         },
         {
-          title: "Transaction Status",
+          title: "Nav.transaction-status",
           href: "/api/payment",
           items: [],
           label: "POST",
         },
         {
-          title: "Payout Request",
+          title: "Nav.payout-request",
           href: "/api/payment",
           items: [],
           label: "POST",
         },
         {
-          title: "Get Balance",
+          title: "Nav.get-balance",
           href: "/api/payment",
           items: [],
           label: "GET",
@@ -124,85 +124,50 @@ export const docsConfig: DocsConfig = {
       ],
     },
     {
-      title: "Payment Request V3",
+      title: "Nav.callback",
       items: [
         {
-          title: "Payment Request (for INR, BDT, VND, JPY, BRL)",
-          href: "/api/payment",
-          items: [],
-          label: "POST",
-        },
-        {
-          title: "Payment Request (for KRW only)",
-          href: "/api/payment",
-          items: [],
-          label: "POST",
-        },
-        {
-          title: "Submit UTR API (for INR Only)",
-          href: "/api/payment",
-          items: [],
-          label: "POST",
-        },
-        {
-          title: "Submit RefNo API (for BDT only)",
-          href: "/api/payment",
-          items: [],
-          label: "POST",
-        },
-        {
-          title: "Submit Depositor Account (for KRW only)",
-          href: "/api/payment",
-          items: [],
-          label: "POST",
-        },
-      ],
-    },
-    {
-      title: "Callback",
-      items: [
-        {
-          title: "Callback Page",
+          title: "Nav.callback-page",
           href: "/api/callback/page",
           items: [],
         },
         {
-          title: "Deposit Callback ",
+          title: "Nav.deposit-callback",
           href: "/api/callback/deposit",
           items: [],
         },
         {
-          title: "Payout Callback",
+          title: "Nav.payout-callback",
           href: "/api/callback/payout",
           items: [],
         },
       ],
     },
     {
-      title: "Status",
+      title: "Nav.status",
       items: [
         {
-          title: "Deposit Transaction",
+          title: "Nav.deposit-transaction",
           href: "/api/status/deposit",
           items: [],
         },
         {
-          title: "Payout Transaction",
+          title: "Nav.payout-transaction",
           href: "/api/status/payout",
           items: [],
         },
       ],
     },
     {
-      title: "Error",
+      title: "Nav.error",
       items: [
         {
-          title: "Payment Error",
+          title: "Nav.payment-error",
           href: "/api/errors/deposit",
           items: [],
         },
         {
-          title: "Payout Error",
+          title: "Nav.payout-error",
           href: "/api/errors/payout",
           items: [],
         },

@@ -6,13 +6,15 @@ import { usePathname } from "next/navigation"
 
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
+import { useTranslations } from "next-intl"
 
 export function MainNav() {
   const pathname = usePathname()
+  const t = useTranslations();
 
   const navLinks = [
-    { href: "/docs", text: "Docs" },
-    { href: "/docs/api", text: "API" },
+    { href: "/docs", text: "Nav.docs" },
+    { href: "/api", text: "Nav.api" },
   ]
 
   return (
@@ -30,7 +32,7 @@ export function MainNav() {
               pathname === link.href ? "text-light" : "text-light/60"
             )}
           >
-            {link.text}
+            {t(link.text)}
           </Link>
         ))}
       </nav>
