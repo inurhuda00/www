@@ -1,3 +1,4 @@
+media: content
 content:
   - name: content-name
     label: content-label
