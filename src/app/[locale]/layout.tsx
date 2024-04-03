@@ -1,10 +1,10 @@
 import { Metadata, Viewport } from "next"
 import { locales } from "@/navigation"
 import { siteConfig } from "config/site"
+import { GeistSans } from "geist/font/sans"
 import { NextIntlClientProvider, useMessages } from "next-intl"
 import { unstable_setRequestLocale } from "next-intl/server"
 
-import { GeistSans } from "geist/font/sans";
 import { cn } from "@/lib/utils"
 import { Toaster as NewYorkSonner } from "@/components/ui/sonner"
 import { Toaster as NewYorkToaster } from "@/components/ui/toaster"
@@ -97,7 +97,8 @@ export default function RootLayout({
         <body
           className={cn(
             "min-h-screen bg-background font-sans antialiased",
-            GeistSans.variable, fontMono.variable
+            GeistSans.variable,
+            fontMono.variable
           )}
         >
           <NextIntlClientProvider messages={messages}>

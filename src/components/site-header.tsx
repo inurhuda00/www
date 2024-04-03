@@ -1,9 +1,10 @@
+import { locales } from "config/site"
+
 import { CommandMenu } from "@/components/command-menu"
 import { LocaleSwitcher } from "@/components/locale-switcher"
 import { MainNav } from "@/components/main-nav"
 import { MobileNav } from "@/components/mobile-nav"
 import { ModeToggle } from "@/components/mode-toggle"
-import { locales } from "config/site"
 
 export function SiteHeader() {
   return (

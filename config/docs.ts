@@ -107,7 +107,7 @@ export const docsConfig: DocsConfig = {
           href: "/api/status/payout-transaction",
           items: [],
         },
-      ]
+      ],
     },
     {
       title: "Nav.api-function",
