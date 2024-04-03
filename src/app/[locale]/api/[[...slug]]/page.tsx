@@ -38,7 +38,6 @@ async function getApiFromParams(params: ApiPageProps["params"]) {
 
   const api = allApis.find((api) => api.slugAsParams === `api${slug ? `/${slug}` : ''}` && api.locale === locale)
 
-  console.log(params, api?.locale)
   if (!api) {
     return null
   }
