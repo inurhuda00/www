@@ -23,6 +23,9 @@
     "vnd-bank-code": "Vnd Bank Code",
     "api-references": "Api References",
     "overview": "Overview",
+    "deposit-transaction": "Deposit Transaction",
+    "payout-transaction": "Payout Transaction",
+    "api-function": "API Function",
     "payment-request": "Payment Request",
     "transaction-status": "Transaction Status",
     "payout-request": "Payout Request",
@@ -31,12 +34,16 @@
     "callback-page": "Callback Page",
     "deposit-callback": "Deposit Callback",
     "payout-callback": "Payout Callback",
-    "status": "Status",
-    "deposit-transaction": "Deposit-Transaction",
-    "payout-transaction": "Payout-Transaction",
     "error": "Error",
-    "payment-error": "Payment-Error",
-    "payout-error": "Payout-Error"
+    "payment-error": "Payment Error",
+    "payout-error": "Payout Error",
+    "api-function-v3": "API Function V3",
+    "v3": {
+      "payment": "Payment Request (for INR, BDT, VND, JPY, BRL)",
+      "krw-payment": "Payment Request (for KRW only)",
+      "submit-utr": "Submit UTR API (for INR Only)",
+      "submit-depositor": "Submit Depositor Account (for KRW only)"
+    }
   },
   "Layout": {
     "on-this-page": "On This Page"

@@ -31,7 +31,6 @@
     "callback-page": "Halaman Callback",
     "deposit-callback": "Callback Deposit",
     "payout-callback": "Callback Pencairan",
-    "status": "Status",
     "deposit-transaction": "Transaksi Deposit",
     "payout-transaction": "Transaksi Pencairan",
     "error": "Error",

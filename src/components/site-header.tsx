@@ -7,7 +7,7 @@ import { locales } from "config/site"
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-dark ">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-dark">
       <div className="container flex max-w-screen-2xl items-center py-2">
         <MainNav />
         <MobileNav />

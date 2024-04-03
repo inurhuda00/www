@@ -98,6 +98,21 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Nav.deposit-transaction",
+          href: "/api/status/deposit",
+          items: [],
+        },
+        {
+          title: "Nav.payout-transaction",
+          href: "/api/status/payout-transaction",
+          items: [],
+        },
+      ]
+    },
+    {
+      title: "Nav.api-function",
+      items: [
+        {
           title: "Nav.payment-request",
           href: "/api/payment",
           items: [],
@@ -105,21 +120,50 @@ export const docsConfig: DocsConfig = {
         },
         {
           title: "Nav.transaction-status",
-          href: "/api/payment",
+          href: "/api/transaction-status",
           items: [],
           label: "POST",
         },
         {
           title: "Nav.payout-request",
-          href: "/api/payment",
+          href: "/api/payout",
           items: [],
           label: "POST",
         },
         {
           title: "Nav.get-balance",
-          href: "/api/payment",
+          href: "/api/balance",
           items: [],
           label: "GET",
+        },
+      ],
+    },
+    {
+      title: "Nav.api-function-v3",
+      items: [
+        {
+          title: "Nav.v3.payment",
+          href: "/api/v3/payment",
+          items: [],
+          label: "POST",
+        },
+        {
+          title: "Nav.v3.krw-payment",
+          href: "/api/v3/krw-payment",
+          items: [],
+          label: "POST",
+        },
+        {
+          title: "Nav.v3.submit-utr",
+          href: "/api/v3/submit-utr",
+          items: [],
+          label: "POST",
+        },
+        {
+          title: "Nav.v3.submit-depositor",
+          href: "/api/v3/krw-depositor",
+          items: [],
+          label: "POST",
         },
       ],
     },
@@ -139,21 +183,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Nav.payout-callback",
           href: "/api/callback/payout",
-          items: [],
-        },
-      ],
-    },
-    {
-      title: "Nav.status",
-      items: [
-        {
-          title: "Nav.deposit-transaction",
-          href: "/api/status/deposit",
-          items: [],
-        },
-        {
-          title: "Nav.payout-transaction",
-          href: "/api/status/payout",
           items: [],
         },
       ],

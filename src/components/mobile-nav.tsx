@@ -21,7 +21,7 @@ export function MobileNav() {
       <SheetTrigger asChild>
         <Button
           variant="ghost"
-          className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+          className="mr-2 px-0 text-light hover:text-light hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
         >
           <svg
             strokeWidth="1.5"
@@ -55,7 +55,7 @@ export function MobileNav() {
           <span className="sr-only">Toggle Menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="pr-0">
+      <SheetContent side="left" className="pr-0 bg-dark">
         <MobileLink
           href="/"
           className="flex items-center"
@@ -63,7 +63,7 @@ export function MobileNav() {
         >
           <Icons.logo className="mr-2 h-4 w-4" />
         </MobileLink>
-        <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
+        <ScrollArea className="my-4 h-[calc(100vh-8rem)] pl-4">
           <div className="flex flex-col space-y-3">
             {docsConfig.mainNav?.map(
               (item) =>

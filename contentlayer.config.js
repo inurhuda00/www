@@ -21,7 +21,12 @@ const computedFields = {
   },
   slugAsParams: {
     type: "string",
-    resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
+    resolve: (doc) => {
+      // check if path provide
+      return doc.path
+        ? doc.path
+        : doc._raw.flattenedPath.split("/").slice(1).join("/")
+    },
   },
   locale: {
     type: "enum",
@@ -33,33 +38,14 @@ const computedFields = {
   },
 }
 
-export const Docs = defineDocumentType(() => ({
-  name: "Doc",
-  filePathPattern: `**/docs/**/*.mdx`,
+export const Page = defineDocumentType(() => ({
+  name: "Page",
+  filePathPattern: `**/**/**/*.mdx`,
   contentType: "mdx",
   fields: {
-    title: {
+    path: {
       type: "string",
-      required: true,
     },
-    description: {
-      type: "string",
-      required: true,
-    },
-    toc: {
-      type: "boolean",
-      default: true,
-      required: false,
-    },
-  },
-  computedFields,
-}))
-
-export const Api = defineDocumentType(() => ({
-  name: "Api",
-  filePathPattern: `**/api/**/*.mdx`,
-  contentType: "mdx",
-  fields: {
     tag: {
       type: "string",
     },
@@ -85,7 +71,7 @@ export const Api = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: "./content",
-  documentTypes: [Docs, Api],
+  documentTypes: [Page],
   mdx: {
     remarkPlugins: [remarkGfm, codeImport],
     rehypePlugins: [

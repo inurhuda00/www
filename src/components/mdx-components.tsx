@@ -23,7 +23,6 @@ import { CodeGroup } from "@/components/code-group"
 import { ComponentExample } from "@/components/component-example"
 import { ComponentSource } from "@/components/component-source"
 import { CopyButton } from "@/components/copy-button"
-import { FrameworkDocs } from "@/components/framework-docs"
 
 function InfoIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
@@ -355,12 +354,6 @@ const components = {
       )}
       {...props}
     />
-  ),
-  FrameworkDocs: ({
-    className,
-    ...props
-  }: React.ComponentProps<typeof FrameworkDocs>) => (
-    <FrameworkDocs className={cn(className)} {...props} />
   ),
   Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link
