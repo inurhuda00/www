@@ -1,0 +1,5 @@
+content:
+  - name: content-name
+    label: content-label
+    path: content
+    type: collection
