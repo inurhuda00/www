@@ -3,14 +3,14 @@
 import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { useTranslations } from "next-intl"
 
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
-import { useTranslations } from "next-intl"
 
 export function MainNav() {
   const pathname = usePathname()
-  const t = useTranslations();
+  const t = useTranslations()
 
   const navLinks = [
     { href: "/docs", text: "Nav.docs" },

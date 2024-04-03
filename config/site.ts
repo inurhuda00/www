@@ -1,3 +1,5 @@
+export const locales = ["en", "id"] as const
+
 export const siteConfig = {
   name: "seapay",
   url: "https://api-doc.s88pay.net",

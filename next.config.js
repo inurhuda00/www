@@ -1,7 +1,5 @@
-const { createContentlayerPlugin } = require("next-contentlayer");
-const createNextIntlPlugin = require("next-intl/plugin");
- 
-
+const { createContentlayerPlugin } = require("next-contentlayer")
+const createNextIntlPlugin = require("next-intl/plugin")
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -22,6 +20,6 @@ const nextConfig = {
 }
 
 const withContentlayer = createContentlayerPlugin()
-const withNextIntl = createNextIntlPlugin();
+const withNextIntl = createNextIntlPlugin()
 
-module.exports =  withNextIntl(withContentlayer(nextConfig))
+module.exports = withNextIntl(withContentlayer(nextConfig))

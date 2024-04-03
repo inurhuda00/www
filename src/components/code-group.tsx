@@ -76,13 +76,19 @@ export function CodeGroup({
         </List>
       </div>
       <figure>
-      {props.tag ? <CodePanelHeader tag={props.tag} label={props.label} /> : <figcaption/>}
+        {props.tag ? (
+          <CodePanelHeader tag={props.tag} label={props.label} />
+        ) : (
+          <figcaption />
+        )}
         {Children.map(children, (figure: any, index) => (
-              <TabsContent key={index} value={figure.props.children.props["data-language"]}>
-                {figure.props.children}
-              </TabsContent>
-            )
-        ) ?? []}
+          <TabsContent
+            key={index}
+            value={figure.props.children.props["data-language"]}
+          >
+            {figure.props.children}
+          </TabsContent>
+        )) ?? []}
       </figure>
     </Tabs>
   )

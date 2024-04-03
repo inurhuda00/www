@@ -1,0 +1,40 @@
+---
+title: Pengantar
+description: Pendahuluan
+---
+
+Untuk dapat melakukan pembayaran S88pay melalui API, operator harus membuat URL yang berisi token dan parameter. Anda dapat melihat dokumentasi **fungsi API** untuk URL dan parameter dengan jelas.
+
+Berdasarkan keamanan pada prasyarat, parameter biasanya menggunakan kunci dengan fungsi enkripsi. Anda dapat melihat [enkripsi / dekripsi](/api-reference/encrypt-decrypt).
+
+## Membuat Permintaan
+
+Misalkan kita ingin membuat permintaan pembayaran, enpoint haruslah dopayment. Dan kita perhatikan parameter yang diperlukan
+
+<Steps>
+
+### Gabungkan semua parameter menjadi satu string, dipisahkan oleh karakter `&`
+
+misalnya, untuk membuat permintaan dalam layanan kami.
+
+```php
+$str = merchant_code=xxx&merchant_api_key=xxx&transaction_code=xxx&transaction_timestamp=xxx&payment_code=xxx&transaction_amount=xxx&user_id=xxx&currency_code=xxx
+```
+
+### Enkripsi menggunakan encrypt_decrypt
+
+Pelajari lebih lanjut tentang [encrypt_decrypt ](/api-reference/encrypt-decrypt)
+
+Contoh Enkripsi:
+
+```php
+$key = encrypt_decrypt('encrypt', $str, '{your_api_key}', '{your_secret_key}')
+```
+
+### Selesai
+
+Jadi, permintaan akan menjadi:
+
+`https://{base_url}/{Merchant_Code}/v2/dopayment?key=3eX%2Bf%2BMoVECXxSkKqV7aBRYIbyWg3DxdPdgZyG%2B377a7dR1OBBDNnU%2B%2Fvtn7hUyjP7WWdZ7gCsPF0J%2BJOiSxb1BFueIyRX3rxbSMa%2B%2FAyFvhz4L%2F2wJmSJKcNQn4whIL1sc1cfj7E1smQFAiYjfLXdY1Ev6Pnoit8Vouex3%2BupnZjJS8t44XRx5wugB5GuybZWPtlPhiN%2FP7P4uJW3RlFlo%2BtYrnHQ6GwqwRkoLrdv3qZXUzaatT8EWdztr973KWFDof2rVD%2B56SMAVrRHQZcYICU8RcjpyvJUaCtXpOKKg%3D`
+
+</Steps>

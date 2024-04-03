@@ -10,9 +10,10 @@ import {
   MoonIcon,
   SunIcon,
 } from "@radix-ui/react-icons"
+import { docsConfig } from "config/docs"
+import { useTranslations } from "next-intl"
 import { useTheme } from "next-themes"
 
-import { docsConfig } from "config/docs"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
@@ -24,7 +25,6 @@ import {
   CommandList,
   CommandSeparator,
 } from "@/components/ui/command"
-import { useTranslations } from "next-intl"
 
 export function CommandMenu({ ...props }: DialogProps) {
   const t = useTranslations()
@@ -96,7 +96,7 @@ export function CommandMenu({ ...props }: DialogProps) {
               ))}
           </CommandGroup>
           {docsConfig.sidebarNav.map((group) => (
-            <CommandGroup key={group.title} heading={group.title}>
+            <CommandGroup key={group.title} heading={t(group.title)}>
               {group.items.map((navItem) => (
                 <CommandItem
                   key={navItem.href}

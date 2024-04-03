@@ -2,11 +2,11 @@
 "use client"
 
 import * as React from "react"
+import { useTranslations } from "next-intl"
 
 import { TableOfContents } from "@/lib/toc"
 import { cn } from "@/lib/utils"
 import { useMounted } from "@/hooks/use-mounted"
-import { useTranslations } from "next-intl"
 
 // @ts-nocheck
 
@@ -15,7 +15,7 @@ interface TocProps {
 }
 
 export function DashboardTableOfContents({ toc }: TocProps) {
-  const t = useTranslations('Layout');
+  const t = useTranslations("Layout")
 
   const itemIds = React.useMemo(
     () =>
@@ -37,7 +37,7 @@ export function DashboardTableOfContents({ toc }: TocProps) {
 
   return (
     <div className="space-y-2">
-      <p className="font-medium">{ t("on-this-page")}</p>
+      <p className="font-medium">{t("on-this-page")}</p>
       <Tree tree={toc} activeItem={activeHeading} />
     </div>
   )

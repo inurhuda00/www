@@ -1,0 +1,47 @@
+{
+  "Index": {
+    "title": "Halo dunia!"
+  },
+  "Nav": {
+    "docs": "Dokumentasi",
+    "api": "API",
+    "documentation": "Dokumentasi",
+    "getting-started": "Memulai",
+    "introduction": "Pengantar",
+    "pre-requirement": "Prasyarat",
+    "resources": "Sumber daya",
+    "merchant-currency": "Mata uang Merchant",
+    "bdt-bank-code": "Kode Bank BDT",
+    "brl-bank-code": "Kode Bank BRL",
+    "cny-bank-code": "Kode Bank CNY",
+    "idr-bank-code": "Kode Bank IDR",
+    "jpy-bank-code": "Kode Bank JPY",
+    "krw-bank-code": "Kode Bank KRW",
+    "myr-bank-code": "Kode Bank MYR",
+    "php-bank-code": "Kode Bank PHP",
+    "thb-bank-code": "Kode Bank THB",
+    "vnd-bank-code": "Kode Bank VND",
+    "api-references": "Referensi API",
+    "overview": "Ikhtisar",
+    "payment-request": "Permintaan Pembayaran",
+    "transaction-status": "Status Transaksi",
+    "payout-request": "Permintaan Pencairan",
+    "get-balance": "Dapatkan Saldo",
+    "callback": "Callback",
+    "callback-page": "Halaman Callback",
+    "deposit-callback": "Callback Deposit",
+    "payout-callback": "Callback Pencairan",
+    "status": "Status",
+    "deposit-transaction": "Transaksi Deposit",
+    "payout-transaction": "Transaksi Pencairan",
+    "error": "Error",
+    "payment-error": "Error Pembayaran",
+    "payout-error": "Error Pencairan"
+  },
+  "Layout": {
+    "on-this-page": "Di Halaman Ini"
+  },
+  "NotFoundPage": {
+    "title": "Tidak Ditemukan"
+  }
+}

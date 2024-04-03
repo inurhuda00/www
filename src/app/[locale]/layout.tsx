@@ -1,6 +1,9 @@
 import { Metadata, Viewport } from "next"
-
+import { locales } from "@/navigation"
 import { siteConfig } from "config/site"
+import { NextIntlClientProvider, useMessages } from "next-intl"
+import { unstable_setRequestLocale } from "next-intl/server"
+
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { Toaster as NewYorkSonner } from "@/components/ui/sonner"
@@ -8,13 +11,11 @@ import { Toaster as NewYorkToaster } from "@/components/ui/toaster"
 import { ThemeProvider } from "@/components/providers"
 import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
-import { NextIntlClientProvider, useMessages } from "next-intl"
-import { locales } from "@/navigation"
-import { unstable_setRequestLocale } from "next-intl/server"
-import  "@/styles/globals.css";
+
+import "@/styles/globals.css"
 
 export function generateStaticParams() {
-  return locales.map((locale) => ({locale}));
+  return locales.map((locale) => ({ locale }))
 }
 
 export const metadata: Metadata = {
@@ -78,38 +79,43 @@ export const viewport: Viewport = {
 
 interface RootLayoutProps {
   children: React.ReactNode
-  params: {locale: string}
+  params: { locale: string }
 }
 
-export default function RootLayout({ children, params: {locale} }: RootLayoutProps) {
-  unstable_setRequestLocale(locale);
-  const messages = useMessages();
-  
+export default function RootLayout({
+  children,
+  params: { locale },
+}: RootLayoutProps) {
+  unstable_setRequestLocale(locale)
+  const messages = useMessages()
+
   return (
     <>
       <html lang="en" suppressHydrationWarning>
         <head />
         <body
           className={cn(
-            "min-h-screen bg-background font-sans antialiased", fontSans.className )}
+            "min-h-screen bg-background font-sans antialiased",
+            fontSans.className
+          )}
         >
           <NextIntlClientProvider messages={messages}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <div vaul-drawer-wrapper="">
-              <div className="relative flex min-h-screen flex-col bg-background">
-                <SiteHeader />
-                <main className="flex-1">{children}</main>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <div vaul-drawer-wrapper="">
+                <div className="relative flex min-h-screen flex-col bg-background">
+                  <SiteHeader />
+                  <main className="flex-1">{children}</main>
+                </div>
               </div>
-            </div>
-            <TailwindIndicator />
-            <NewYorkToaster />
-            <NewYorkSonner />
-          </ThemeProvider>
+              <TailwindIndicator />
+              <NewYorkToaster />
+              <NewYorkSonner />
+            </ThemeProvider>
           </NextIntlClientProvider>
         </body>
       </html>

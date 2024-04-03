@@ -1,7 +1,9 @@
 import { CommandMenu } from "@/components/command-menu"
+import { LocaleSwitcher } from "@/components/locale-switcher"
 import { MainNav } from "@/components/main-nav"
 import { MobileNav } from "@/components/mobile-nav"
 import { ModeToggle } from "@/components/mode-toggle"
+import { locales } from "config/site"
 
 export function SiteHeader() {
   return (
@@ -14,6 +16,7 @@ export function SiteHeader() {
             <CommandMenu />
           </div>
           <nav className="flex items-center">
+            <LocaleSwitcher locales={locales} />
             <ModeToggle />
           </nav>
         </div>

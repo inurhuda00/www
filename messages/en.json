@@ -40,5 +40,8 @@
   },
   "Layout": {
     "on-this-page": "On This Page"
+  },
+  "NotFoundPage": {
+    "title": "Not Found"
   }
 }

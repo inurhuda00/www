@@ -1,37 +1,38 @@
 ---
-title: Deposit Callback (Operator)
+title: Payout Callback (Operator)
 description: callback
 ---
 
-
-After the operator sends a payment request to dopayment / deposit, the provider will process it. Once the provider receives the transaction status ( success or failure ), the provider will call this API to forward the transaction status.
+After the operator sends payout requests, the provider will process it. Once the provider gets the transaction status (success or failed), the provider will call this API to forward the transaction status.
 
 ```bash cURL
-  curl --request POST \
-    --url https://s88pay.net/api/v1/transaction/resend-callback/SKU20210909025705 \
-    --header 'Content-Type: application/json' \
-    --data '{
-        "key": "<string>",
-        "transaction_code": "<string>",
-        "transaction_no": "<string>"
-      }'
+curl --request POST \
+  --url https://s88pay.net/api/v1/transaction/resend-callback/SKU20210909025705 \
+  --header 'Content-Type: application/json' \
+  --data '{
+      "key": "<string>",
+      "transaction_code": "<string>",
+      "transaction_no": "<string>"
+    }'
 ```
 
 ```json Response after decrypting
 {
+  "transaction_no": "",
   "transaction_code": "",
   "transaction_status": "",
   "transaction_amount": "",
   "transaction_fee": "",
   "currency_code": "",
-  "transaction_no": "",
-  "transaction_actual_amount": ""
+  "transaction_ref": ""
 }
 ```
 
-For key, you need to decrypt with `api_key` and `api_secret`. Besides the key, we also send the transaction code in the `transaction_code` parameter and the transaction number in the `transaction_no` parameter, which is not encrypted.
+Provider will send the parameter on key format, then operator need to decrypt it using [encrypt/decrypt](/api-reference/encrypt-decrypt), you need to decrypt with `api_key` and `api_secret`.
 
-After decrypting the parameters, you will find that the parameters are:
+Besides the key, we also send the transaction code in the `transaction_code` parameter and the transaction number in the `transaction_no` parameter that is not encrypted.
+
+After decrypting the parameter you will find that the parameters are:
 
 ## Parameters
 
@@ -52,8 +53,17 @@ After decrypting the parameters, you will find that the parameters are:
       <Property
         className={"Property"}
         param={{
+          name: "transaction_no",
+          description: "The transaction code recorded by the provider",
+          schema: { type: "string" },
+        }}
+      ></Property>
+      <Property
+        className={"Property"}
+        param={{
           name: "transaction_code",
-          description: "The transaction code that is sent by the operator on dopayment.",
+          description:
+            "The transaction code sent by the operator on payout request",
           schema: { type: "string" },
         }}
       ></Property>
@@ -61,7 +71,7 @@ After decrypting the parameters, you will find that the parameters are:
         className={"Property"}
         param={{
           name: "transaction_status",
-          description: "The status of the deposit transaction",
+          description: "The status of the payout transaction",
           schema: { type: "integer" },
         }}
       ></Property>
@@ -69,7 +79,7 @@ After decrypting the parameters, you will find that the parameters are:
         className={"Property"}
         param={{
           name: "transaction_amount",
-          description: "The amount of the transaction",
+          description: "The amount of of the transaction",
           schema: { type: "double" },
         }}
       ></Property>
@@ -92,16 +102,8 @@ After decrypting the parameters, you will find that the parameters are:
       <Property
         className={"Property"}
         param={{
-          name: "transaction_no",
-          description: "The transaction code on the provider’s database",
-          schema: { type: "string" },
-        }}
-      ></Property>
-      <Property
-        className={"Property"}
-        param={{
-          name: "transaction_actual_amount",
-          description: "The actual amount paid by the member",
+          name: "transaction_ref",
+          description: "Transaction reference of payout request",
           schema: { type: "double" },
         }}
       ></Property>

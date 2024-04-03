@@ -1,159 +1,130 @@
 import type { Metadata } from "next"
-import Link from "next/link"
 
-import { siteConfig } from "config/site"
 import { getTableOfContents } from "@/lib/toc"
 import { absoluteUrl, cn } from "@/lib/utils"
-import { badgeVariants } from "@/components//ui/badge"
 import { ScrollArea } from "@/components//ui/scroll-area"
 import { Mdx } from "@/components/mdx-components"
 import { DocsPager } from "@/components/pager"
 import { DashboardTableOfContents } from "@/components/toc"
 
 import "@/styles/mdx.css"
-import { ChevronRightIcon, ExternalLinkIcon } from "@radix-ui/react-icons"
+import { notFound } from "next/navigation"
+import { ChevronRightIcon } from "@radix-ui/react-icons"
 import { allApis } from "contentlayer/generated"
-import Balancer from "react-wrap-balancer"
 import { unstable_setRequestLocale } from "next-intl/server"
-import { redirect } from "@/navigation"
+import Balancer from "react-wrap-balancer"
 
-interface DocPageProps {
+import { generatePageMeta } from "@/lib/seo"
+import { siteConfig } from "config/site"
+
+interface ApiPageProps {
   params: {
     slug: string[]
     locale: string
   }
 }
 
-async function getDocFromParams({ params }: DocPageProps) {
+async function getApiFromParams(params: ApiPageProps["params"]) {
   const slug = params.slug?.join("/") || ""
-  const doc = allApis.find((doc) => doc.slugAsParams === slug)
+  const locale = params?.locale
 
-  if (!doc) {
+  if (!slug) {
+    null
+  }
+
+  if (!locale) {
+    null
+  }
+
+  const api = allApis.find((api) => api.slugAsParams === `api${slug ? `/${slug}` : ''}` && api.locale === locale)
+
+  console.log(params, api?.locale)
+  if (!api) {
     return null
   }
 
-  return doc
+  return api
 }
 
 export async function generateMetadata({
   params,
-}: DocPageProps): Promise<Metadata> {
-  const doc = await getDocFromParams({ params })
+}: ApiPageProps): Promise<Metadata> {
+  const api = await getApiFromParams(params)
 
-  if (!doc) {
+  if (!api) {
     return {}
   }
 
-  return {
-    title: doc.title,
-    description: doc.description,
-    openGraph: {
-      title: doc.title,
-      description: doc.description,
-      type: "article",
-      url: absoluteUrl(doc.slug),
-      images: [
-        {
-          url: siteConfig.ogImage,
-          width: 1200,
-          height: 630,
-          alt: siteConfig.name,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: doc.title,
-      description: doc.description,
-      images: [siteConfig.ogImage],
-    },
-  }
+  return generatePageMeta({
+    title: api.title,
+    description: api.description,
+    url: absoluteUrl(api.slug),
+    image: siteConfig.ogImage,
+    image_alt: api.title,
+  })
 }
 
 export async function generateStaticParams(): Promise<
-  DocPageProps["params"][]
+  ApiPageProps["params"][]
 > {
-  return allApis.map((doc) => ({
-    locale: 'en',
-    slug: doc.slugAsParams.split("/"),
+  return allApis.map((api) => ({
+    locale: api.locale,
+    slug: api.slugAsParams.split("/"),
   }))
 }
 
-export default async function DocPage({ params }: DocPageProps) {
-  // @ts-ignore
-  unstable_setRequestLocale(params.locale);
+export default async function ApiPage({ params }: ApiPageProps) {
+  unstable_setRequestLocale(params.locale)
 
-  const doc = await getDocFromParams({ params })
+  const api = await getApiFromParams(params)
 
-  if (!doc) {
-    return redirect('/')
-  }
+  if (!api) notFound()
 
-  const toc = await getTableOfContents(doc.body.raw)
+  const toc = await getTableOfContents(api.body.raw)
 
   return (
-    <main className={cn("relative py-6 lg:gap-10 lg:py-8 xl:grid", doc.toc && "xl:grid-cols-[1fr_300px]")}>
+    <main
+      className={cn(
+        "relative py-6 lg:gap-10 lg:py-8 xl:grid",
+        api.toc && "xl:grid-cols-[1fr_300px]"
+      )}
+    >
       <div className="mx-auto w-full min-w-0">
         <div className="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">
           <div className="overflow-hidden text-ellipsis whitespace-nowrap">
-            Docs
+            Apis
           </div>
           <ChevronRightIcon className="h-4 w-4" />
-          <div className="font-medium text-foreground">{doc.title}</div>
+          <div className="font-medium text-foreground">{api.title}</div>
         </div>
         <div className="space-y-2">
-          {doc.tag && doc.label ? (
+          {api.tag && api.label ? (
             <div className="flex items-center gap-x-3">
               <span className="font-mono text-[0.625rem] font-semibold leading-6 rounded-lg px-1.5 ring-1 ring-inset ring-emerald-300 dark:ring-emerald-400/30 bg-emerald-400/10 text-emerald-500 dark:text-emerald-400">
-                {doc.tag}
+                {api.tag}
               </span>
               <span className="font-mono text-xs text-zinc-400">
-                {doc.label}
+                {api.label}
               </span>
             </div>
           ) : null}
 
           <h1 className={cn("scroll-m-20 text-4xl font-bold tracking-tight")}>
-            {doc.title}
+            {api.title}
           </h1>
-          {doc.description && (
+          {api.description && (
             <p className="text-lg text-muted-foreground">
-              <Balancer>{doc.description}</Balancer>
+              <Balancer>{api.description}</Balancer>
             </p>
           )}
         </div>
-        {doc.links ? (
-          <div className="flex items-center space-x-2 pt-4">
-            {doc.links?.doc && (
-              <Link
-                href={doc.links.doc}
-                target="_blank"
-                rel="noreferrer"
-                className={cn(badgeVariants({ variant: "secondary" }), "gap-1")}
-              >
-                Docs
-                <ExternalLinkIcon className="h-3 w-3" />
-              </Link>
-            )}
-            {doc.links?.api && (
-              <Link
-                href={doc.links.api}
-                target="_blank"
-                rel="noreferrer"
-                className={cn(badgeVariants({ variant: "secondary" }), "gap-1")}
-              >
-                API Reference
-                <ExternalLinkIcon className="h-3 w-3" />
-              </Link>
-            )}
-          </div>
-        ) : null}
+
         <div className="pb-12 pt-8">
-          <Mdx code={doc.body.code} />
+          <Mdx code={api.body.code} />
         </div>
-        <DocsPager doc={doc} />
+        <DocsPager doc={api} />
       </div>
-      {doc.toc && (
+      {api.toc && (
         <div className="hidden text-sm xl:block">
           <div className="sticky top-16 -mt-10 pt-4">
             <ScrollArea className="pb-10">

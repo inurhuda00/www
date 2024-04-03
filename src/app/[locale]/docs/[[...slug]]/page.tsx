@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-
 import { siteConfig } from "config/site"
+
 import { getTableOfContents } from "@/lib/toc"
 import { absoluteUrl, cn } from "@/lib/utils"
 import { badgeVariants } from "@/components//ui/badge"
@@ -11,11 +11,13 @@ import { DocsPager } from "@/components/pager"
 import { DashboardTableOfContents } from "@/components/toc"
 
 import "@/styles/mdx.css"
-import { ChevronRightIcon, ExternalLinkIcon } from "@radix-ui/react-icons"
-import { allDocs } from "contentlayer/generated"
-import Balancer from "react-wrap-balancer"
-import { unstable_setRequestLocale } from "next-intl/server"
 import { redirect } from "@/navigation"
+import { ChevronRightIcon } from "@radix-ui/react-icons"
+import { allDocs } from "contentlayer/generated"
+import { unstable_setRequestLocale } from "next-intl/server"
+import Balancer from "react-wrap-balancer"
+import { generatePageMeta } from "@/lib/seo"
+import { notFound } from "next/navigation"
 
 interface DocPageProps {
   params: {
@@ -24,9 +26,19 @@ interface DocPageProps {
   }
 }
 
-async function getDocFromParams({ params }: DocPageProps) {
+async function getDocFromParams(params: DocPageProps['params']) {
   const slug = params.slug?.join("/") || ""
-  const doc = allDocs.find((doc) => doc.slugAsParams === slug)
+  const locale = params?.locale
+
+  if (!slug) {
+    null
+  }
+
+  if (!locale) {
+    null
+  }
+
+  const doc = allDocs.find((api) => api.slugAsParams === `docs${slug ? `/${slug}` : ''}` && api.locale === locale)
 
   if (!doc) {
     return null
@@ -38,61 +50,47 @@ async function getDocFromParams({ params }: DocPageProps) {
 export async function generateMetadata({
   params,
 }: DocPageProps): Promise<Metadata> {
-  const doc = await getDocFromParams({ params })
+  const doc = await getDocFromParams(params)
 
   if (!doc) {
     return {}
   }
 
-  return {
+  return generatePageMeta({
     title: doc.title,
     description: doc.description,
-    openGraph: {
-      title: doc.title,
-      description: doc.description,
-      type: "article",
-      url: absoluteUrl(doc.slug),
-      images: [
-        {
-          url: siteConfig.ogImage,
-          width: 1200,
-          height: 630,
-          alt: siteConfig.name,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: doc.title,
-      description: doc.description,
-      images: [siteConfig.ogImage],
-    },
-  }
+    url: absoluteUrl(doc.slug),
+    image: siteConfig.ogImage,
+    image_alt: doc.title,
+  })
 }
 
 export async function generateStaticParams(): Promise<
   DocPageProps["params"][]
 > {
   return allDocs.map((doc) => ({
-    locale: 'en',
+    locale: doc.locale,
     slug: doc.slugAsParams.split("/"),
   }))
 }
 
 export default async function DocPage({ params }: DocPageProps) {
-  // @ts-ignore
-  unstable_setRequestLocale(params.locale);
+  unstable_setRequestLocale(params.locale)
 
-  const doc = await getDocFromParams({ params })
+  const doc = await getDocFromParams(params)
 
-  if (!doc) {
-    return redirect('/')
-  }
+  if (!doc) notFound()
+
 
   const toc = await getTableOfContents(doc.body.raw)
 
   return (
-    <main className={cn("relative py-6 lg:gap-10 lg:py-8 xl:grid", doc.toc && "xl:grid-cols-[1fr_300px]")}>
+    <main
+      className={cn(
+        "relative py-6 lg:gap-10 lg:py-8 xl:grid",
+        doc.toc && "xl:grid-cols-[1fr_300px]"
+      )}
+    >
       <div className="mx-auto w-full min-w-0">
         <div className="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">
           <div className="overflow-hidden text-ellipsis whitespace-nowrap">
@@ -111,32 +109,6 @@ export default async function DocPage({ params }: DocPageProps) {
             </p>
           )}
         </div>
-        {doc.links ? (
-          <div className="flex items-center space-x-2 pt-4">
-            {doc.links?.doc && (
-              <Link
-                href={doc.links.doc}
-                target="_blank"
-                rel="noreferrer"
-                className={cn(badgeVariants({ variant: "secondary" }), "gap-1")}
-              >
-                Docs
-                <ExternalLinkIcon className="h-3 w-3" />
-              </Link>
-            )}
-            {doc.links?.api && (
-              <Link
-                href={doc.links.api}
-                target="_blank"
-                rel="noreferrer"
-                className={cn(badgeVariants({ variant: "secondary" }), "gap-1")}
-              >
-                API Reference
-                <ExternalLinkIcon className="h-3 w-3" />
-              </Link>
-            )}
-          </div>
-        ) : null}
         <div className="pb-12 pt-8">
           <Mdx code={doc.body.code} />
         </div>

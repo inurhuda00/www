@@ -1,19 +1,19 @@
 import Link from "next/link"
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons"
+import { docsConfig } from "config/docs"
 import { Api, Doc } from "contentlayer/generated"
+import { useTranslations } from "next-intl"
 import { NavItem, NavItemWithChildren } from "types/nav"
 
-import { docsConfig } from "config/docs"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
-import { useTranslations } from "next-intl"
 
 interface DocsPagerProps {
   doc: Doc | Api
 }
 
 export function DocsPager({ doc }: DocsPagerProps) {
-  const t = useTranslations();
+  const t = useTranslations()
   const pager = getPagerForDoc(doc)
 
   if (!pager) {

@@ -2,10 +2,10 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { useTranslations } from "next-intl"
 import { SidebarNavItem } from "types/nav"
 
 import { cn } from "@/lib/utils"
-import { useTranslations } from "next-intl"
 
 export interface DocsSidebarNavProps {
   items: SidebarNavItem[]

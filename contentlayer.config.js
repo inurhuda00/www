@@ -1,5 +1,3 @@
-import path from "path"
-import fs from "fs";
 import {
   defineDocumentType,
   defineNestedType,
@@ -13,6 +11,8 @@ import remarkGfm from "remark-gfm"
 import { getHighlighter } from "shiki"
 import { visit } from "unist-util-visit"
 
+import { locales } from "./config/site"
+
 /** @type {import('contentlayer/source-files').ComputedFields} */
 const computedFields = {
   slug: {
@@ -23,23 +23,19 @@ const computedFields = {
     type: "string",
     resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
   },
-}
-
-const LinksProperties = defineNestedType(() => ({
-  name: "LinksProperties",
-  fields: {
-    doc: {
-      type: "string",
-    },
-    api: {
-      type: "string",
+  locale: {
+    type: "enum",
+    of: locales.concat([null]),
+    resolve: (doc) => {
+      const locale = doc._raw.flattenedPath.split("/")[0]
+      return locales.includes(locale) ? locale : null
     },
   },
-}))
+}
 
-export const Doc = defineDocumentType(() => ({
+export const Docs = defineDocumentType(() => ({
   name: "Doc",
-  filePathPattern: `docs/**/*.mdx`,
+  filePathPattern: `**/docs/**/*.mdx`,
   contentType: "mdx",
   fields: {
     title: {
@@ -49,24 +45,6 @@ export const Doc = defineDocumentType(() => ({
     description: {
       type: "string",
       required: true,
-    },
-    published: {
-      type: "boolean",
-      default: true,
-    },
-    links: {
-      type: "nested",
-      of: LinksProperties,
-    },
-    featured: {
-      type: "boolean",
-      default: false,
-      required: false,
-    },
-    component: {
-      type: "boolean",
-      default: false,
-      required: false,
     },
     toc: {
       type: "boolean",
@@ -79,14 +57,14 @@ export const Doc = defineDocumentType(() => ({
 
 export const Api = defineDocumentType(() => ({
   name: "Api",
-  filePathPattern: `api/**/*.mdx`,
+  filePathPattern: `**/api/**/*.mdx`,
   contentType: "mdx",
   fields: {
     tag: {
-      type: "string", 
-    }, 
+      type: "string",
+    },
     label: {
-      type: "string", 
+      type: "string",
     },
     title: {
       type: "string",
@@ -95,24 +73,6 @@ export const Api = defineDocumentType(() => ({
     description: {
       type: "string",
       required: true,
-    },
-    published: {
-      type: "boolean",
-      default: true,
-    },
-    links: {
-      type: "nested",
-      of: LinksProperties,
-    },
-    featured: {
-      type: "boolean",
-      default: false,
-      required: false,
-    },
-    component: {
-      type: "boolean",
-      default: false,
-      required: false,
     },
     toc: {
       type: "boolean",
@@ -125,7 +85,7 @@ export const Api = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: "./content",
-  documentTypes: [Doc, Api],
+  documentTypes: [Docs, Api],
   mdx: {
     remarkPlugins: [remarkGfm, codeImport],
     rehypePlugins: [
@@ -160,26 +120,26 @@ export default makeSource({
           defaultLang: "json",
           getHighlighter: async () => {
             const highlighter = await getHighlighter({
-               langs: ['ts', 'js', 'php', 'c#', 'java'],
-               langAlias: { 
-                "200": 'json',
-                "201": 'json',
-                "400": 'json',
-                "109": "json",
-                "110": "json",
-                "111": "json",
-                "112": "json",
-                "113": "json",
-                "114": "json",
-                "115": "json",
-                "116": "json",
-                "117": "json",
-                "118": "json",
-                "119": "json",
+              langs: ["ts", "js", "php", "c#", "java"],
+              langAlias: {
+                200: "json",
+                201: "json",
+                400: "json",
+                109: "json",
+                110: "json",
+                111: "json",
+                112: "json",
+                113: "json",
+                114: "json",
+                115: "json",
+                116: "json",
+                117: "json",
+                118: "json",
+                119: "json",
               },
-               themes: ['github-dark-dimmed']
+              themes: ["github-dark-dimmed"],
             })
-            
+
             return highlighter
           },
         },
@@ -207,7 +167,6 @@ export default makeSource({
             if (node.__event__) {
               preElement.properties["__event__"] = node.__event__
             }
-
           }
         })
       },

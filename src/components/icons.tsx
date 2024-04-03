@@ -1,5 +1,4 @@
 import Image from "next/image"
-
 import Logo from "public/logo.png"
 
 type IconProps = React.HTMLAttributes<SVGElement>
