@@ -4,7 +4,7 @@ import { siteConfig } from "config/site"
 import { NextIntlClientProvider, useMessages } from "next-intl"
 import { unstable_setRequestLocale } from "next-intl/server"
 
-import { fontSans } from "@/lib/fonts"
+import { GeistSans } from "geist/font/sans";
 import { cn } from "@/lib/utils"
 import { Toaster as NewYorkSonner } from "@/components/ui/sonner"
 import { Toaster as NewYorkToaster } from "@/components/ui/toaster"
@@ -13,6 +13,7 @@ import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 
 import "@/styles/globals.css"
+import { fontMono } from "@/lib/fonts"
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }))
@@ -96,7 +97,7 @@ export default function RootLayout({
         <body
           className={cn(
             "min-h-screen bg-background font-sans antialiased",
-            fontSans.className
+            GeistSans.variable, fontMono.variable
           )}
         >
           <NextIntlClientProvider messages={messages}>
